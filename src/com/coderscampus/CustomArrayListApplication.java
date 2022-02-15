@@ -10,9 +10,5 @@ public class CustomArrayListApplication {
 		for (int i=0; i<myCustomList.getSize(); i++) {
 		    System.out.println(myCustomList.get(i));    
 		}
-		System.out.println("----------");
-		System.out.println(myCustomList.get(51));
-
 	}
-
 }

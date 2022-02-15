@@ -1,5 +1,7 @@
 package com.coderscampus;
 
+import java.util.Arrays;
+
 public class CustomArrayList<T> implements CustomList<T> {
 	Object[] items = new Object[10];
 	int arraySize = 0;
@@ -7,17 +9,17 @@ public class CustomArrayList<T> implements CustomList<T> {
 	@Override
 	public boolean add(T item) {
 		if (items.length == arraySize) {
-			items = increasedArraySize(arraySize);
+			items = increasedArraySize(); 
+			//Arrays.copyOf(items, items.length * 2);
 		}
 		items[arraySize] = item;
 		arraySize++;
-
 		return true;
 	}
 
-	private Object[] increasedArraySize(int oldArraySize) {
-		Object[] newArray = new Object[oldArraySize * 2];
-		for (int i = 0; i < oldArraySize; i++) {
+	private Object[] increasedArraySize() {
+		Object[] newArray = new Object[items.length * 2];
+		for (int i = 0; i < items.length; i++) {
 			newArray[i] = items[i];
 		}
 		return newArray;
@@ -28,7 +30,7 @@ public class CustomArrayList<T> implements CustomList<T> {
 		return arraySize;
 	}
 
-
+	@SuppressWarnings("unchecked")
 	public T get(int index) {
 		return (T) items[index];
 	}
